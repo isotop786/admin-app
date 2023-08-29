@@ -1,12 +1,13 @@
-import { Body, Controller,Post, BadRequestException, NotFoundException,Res }
+import { Body, Controller,Post, Get, BadRequestException, NotFoundException,Res,
+    Req, UseInterceptors, ClassSerializerInterceptor }
  from '@nestjs/common';
 import { UserService } from 'src/user/user.service';
 import * as bcrypt from 'bcrypt'; 
 import { RegisterDto } from './models/register.dto';
 import { JwtService } from '@nestjs/jwt';
-import {Response} from 'express'
+import {Response,Request} from 'express'
 
-
+@UseInterceptors(ClassSerializerInterceptor)
 @Controller()
 export class AuthController {
 
@@ -16,6 +17,7 @@ export class AuthController {
 
     ){}
 
+   
     @Post('register')
     async register(@Body() body:RegisterDto){
 
@@ -31,6 +33,7 @@ export class AuthController {
 
     } 
 
+  
     @Post('login')
     async login(
          @Body('email') email: string,
@@ -38,7 +41,7 @@ export class AuthController {
          @Res({ passthrough: true}) response : Response
     )
     {
-        const user = await this.userService.findOne(email);
+        const user = await this.userService.findOne({email});
         if(!user)
         {
             throw new NotFoundException("User not found.")
@@ -48,7 +51,7 @@ export class AuthController {
             throw new BadRequestException("Incorrect password")
         }
 
-        const payload = {sub: user.id, email: user.email, username: user.first_name+"_"+user.last_name}
+        const payload = {id: user.id, email: user.email, first_name: user.first_name, last_name:user.last_name}
         const jwt = await this.jwtService.signAsync(payload)
         response.cookie('jwt',jwt,{httpOnly:true})
 
@@ -57,5 +60,16 @@ export class AuthController {
         //     token: await this.jwtService.signAsync(payload)
         // }
         return user;
+    }
+
+    
+    @Get('user')
+    async user(@Req() request: Request)
+    {
+        const cookie = request.cookies['jwt'];
+
+        const data = await this.jwtService.verifyAsync(cookie);
+
+        return this.userService.findOne({id: data.id})
     }
 }
