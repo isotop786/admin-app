@@ -7,7 +7,6 @@ import { RegisterDto } from './models/register.dto';
 import { JwtService } from '@nestjs/jwt';
 import {Response,Request, response} from 'express'
 import { AuthGuard } from './auth.guard';
-import { NonAuthGuard } from './non-auth/non-auth.guard';
 
 @UseInterceptors(ClassSerializerInterceptor)
 @Controller()
