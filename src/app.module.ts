@@ -6,9 +6,14 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthModule } from './auth/auth.module';
 import { CommonModule } from './common/common.module';
 import { RoleModule } from './role/role.module';
+import { ConfigModule } from '@nestjs/config';
+
 
 @Module({
   imports: [
+    ConfigModule.forRoot({
+   
+    }),
     TypeOrmModule.forRoot({
       type: 'mysql',
       host: 'sql6.freesqldatabase.com',
@@ -35,5 +40,7 @@ import { RoleModule } from './role/role.module';
   controllers: [AppController],
   providers: [AppService],
 })
+
+
 export class AppModule {}
  
