@@ -54,7 +54,8 @@ export class AuthController {
 
         const payload = {id: user.id, email: user.email, first_name: user.first_name, last_name:user.last_name}
         const jwt = await this.jwtService.signAsync(payload)
-        response.cookie('jwt',jwt,{httpOnly:true})
+        // response.cookie('jwt',jwt,{httpOnly:true})
+        response.cookie('jwt',jwt, {httpOnly: true, maxAge: 90 * 24 * 60 * 60 * 1000, sameSite: 'none', secure: true})
 
 
         // return {
