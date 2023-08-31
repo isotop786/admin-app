@@ -60,7 +60,10 @@ export class AuthController {
         // return {
         //     token: await this.jwtService.signAsync(payload)
         // }
-        return user;
+        return{
+            user,
+            token: jwt
+        };
     }
 
     @UseGuards(AuthGuard)
