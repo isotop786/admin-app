@@ -33,7 +33,8 @@ export class UserController {
             first_name: body.first_name,
             last_name: body.last_name,
             email: body.email,
-            password: hashed_password
+            password: hashed_password,
+            role: {id: body.role_id }
         })
     }
 
@@ -51,7 +52,7 @@ export class UserController {
         @Body() body : UserUpdateDTO
     )
     {
-        return this.userService.update(id,body)
+        return this.userService.update(id,{...body,role:{id:body.role_id}})
     }
 
     // Deleting a user

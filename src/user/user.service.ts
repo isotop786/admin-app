@@ -16,7 +16,7 @@ export class UserService {
 
     async paginate(page :any = 1) : Promise<any>
     {
-        const take = 1;
+        const take = 15;
         console.log(page.page)
 
         try{
