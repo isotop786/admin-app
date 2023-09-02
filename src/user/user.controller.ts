@@ -18,10 +18,15 @@ export class UserController {
     
     // getting all users
     @Get()
-    async all(@Query() page: number =1) : Promise<User[]>{
-        // return await this.userService.all();
-        return await this.userService.paginate(page);
+    async all() : Promise<User[]>{
+        return await this.userService.all();
+        // return await this.userService.paginate(page);
     }
+    // @Get()
+    // async all(@Query() page: number =1) : Promise<User[]>{
+    //     return await this.userService.all();
+    //     // return await this.userService.paginate(page);
+    // }
 
     // creating a user
     @Post()
