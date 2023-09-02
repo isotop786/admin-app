@@ -7,6 +7,7 @@ import { AuthModule } from './auth/auth.module';
 import { CommonModule } from './common/common.module';
 import { RoleModule } from './role/role.module';
 import { ConfigModule } from '@nestjs/config';
+import { ProductModule } from './product/product.module';
 
 
 @Module({
@@ -36,7 +37,7 @@ import { ConfigModule } from '@nestjs/config';
     //   synchronize: true,
     //   autoLoadEntities:true
     // })
-    ,UserModule, AuthModule, CommonModule, RoleModule],
+    ,UserModule, AuthModule, CommonModule, RoleModule, ProductModule],
   controllers: [AppController],
   providers: [AppService],
 })
