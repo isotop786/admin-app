@@ -2,16 +2,17 @@ import { Injectable } from '@nestjs/common';
 import {InjectRepository} from "@nestjs/typeorm"
 import { User } from './models/user.entity';
 import {Repository} from "typeorm"
-
+// import { Role } from '../role/models/role.entity';
 
 @Injectable()
 export class UserService {
     constructor(
-        @InjectRepository(User) private readonly userRepository: Repository<User>
+        @InjectRepository(User) private readonly userRepository: Repository<User>,
+        // @InjectRepository(Role) private rolesRepository: Repository<Role>
     ){}
 
     async all(){
-        return this.userRepository.find();
+        return this.userRepository.find( {relations: ['role']}   );
     }
 
     async paginate(page :any = 1) : Promise<any>
