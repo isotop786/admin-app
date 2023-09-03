@@ -9,6 +9,7 @@ import { RoleModule } from './role/role.module';
 import { ConfigModule } from '@nestjs/config';
 import { ProductModule } from './product/product.module';
 import { OrderModule } from './order/order.module';
+import { MessageModule } from './message/message.module';
 
 
 @Module({
@@ -38,7 +39,7 @@ import { OrderModule } from './order/order.module';
     //   synchronize: true,
     //   autoLoadEntities:true
     // })
-    ,UserModule, AuthModule, CommonModule, RoleModule, ProductModule, OrderModule],
+    ,UserModule, AuthModule, CommonModule, RoleModule, ProductModule, OrderModule, MessageModule],
   controllers: [AppController],
   providers: [AppService],
 })
