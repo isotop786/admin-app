@@ -11,10 +11,20 @@ async function bootstrap() {
   app.use(cookieParser());
 
   // enabling cors
-  app.enableCors({
-    origin: true,
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
-    credentials: true,
+//   app.enableCors({
+//     origin: true,
+//     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
+//     credentials: true,
+// });
+
+app.enableCors({
+  origin: [
+    'http://localhost:3000',
+    'http://localhost:999',
+    'https://react-admin-ts.vercel.app',
+  ],
+  methods: ["GET", "POST","PUT","DELETE","PATCH","OPTIONS"],
+  credentials: true,
 });
 
   await app.listen(3300);
