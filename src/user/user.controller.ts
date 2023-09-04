@@ -8,7 +8,7 @@ import { ClassSerializerInterceptor } from '@nestjs/common';
 import { UserUpdateDTO } from './models/use-update.dto';
 
 @UseInterceptors(ClassSerializerInterceptor)
-// @UseGuards(AuthGuard)
+@UseGuards(AuthGuard)
 @Controller('users')
 export class UserController {
 
