@@ -17,13 +17,24 @@ import { MessageModule } from './message/message.module';
     ConfigModule.forRoot({
    
     }),
+    // TypeOrmModule.forRoot({
+    //   type: 'mysql',
+    //   host: 'sql6.freesqldatabase.com',
+    //   port: 3306,
+    //   username: 'sql6642923',
+    //   password: '2QPq3CmaN4',
+    //   database: 'sql6642923',
+    //   // entities: [],
+    //   synchronize: true,
+    //   autoLoadEntities:true
+    // })
     TypeOrmModule.forRoot({
       type: 'mysql',
-      host: 'sql6.freesqldatabase.com',
+      host: 'db4free.net',
       port: 3306,
-      username: 'sql6642923',
-      password: '2QPq3CmaN4',
-      database: 'sql6642923',
+      username: 'marufkabir',
+      password: 'MaruF@123',
+      database: 'nestdb02',
       // entities: [],
       synchronize: true,
       autoLoadEntities:true
