@@ -3,7 +3,7 @@ import { OrderService } from './order.service';
 import { Order } from './models/Order.entity';
 import { AuthGuard } from '../auth/auth.guard';
 
-@UseGuards(AuthGuard)
+// @UseGuards(AuthGuard)
 @Controller('orders')
 export class OrderController {
     constructor(

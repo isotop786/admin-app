@@ -3,7 +3,7 @@ import { MessageService } from './message.service';
 import { MessageCreateDTO } from './models/message-create.dto';
 import { AuthGuard } from '../auth/auth.guard';
 
-@UseGuards(AuthGuard)
+// @UseGuards(AuthGuard)
 @Controller('messages')
 export class MessageController {
     constructor(
